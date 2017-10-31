@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.ShoppingCart", "Sandbox.ShoppingCart\Sandbox.ShoppingCart.csproj", "{ACA6F494-0CAF-465C-A971-8637D9FA3A75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.ShoppingCart.Tests", "Sandbox.ShoppingCart.Tests\Sandbox.ShoppingCart.Tests.csproj", "{CFBF02A6-2808-4C61-ABFB-1D8339B69475}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACA6F494-0CAF-465C-A971-8637D9FA3A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACA6F494-0CAF-465C-A971-8637D9FA3A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACA6F494-0CAF-465C-A971-8637D9FA3A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACA6F494-0CAF-465C-A971-8637D9FA3A75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFBF02A6-2808-4C61-ABFB-1D8339B69475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFBF02A6-2808-4C61-ABFB-1D8339B69475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFBF02A6-2808-4C61-ABFB-1D8339B69475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFBF02A6-2808-4C61-ABFB-1D8339B69475}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
