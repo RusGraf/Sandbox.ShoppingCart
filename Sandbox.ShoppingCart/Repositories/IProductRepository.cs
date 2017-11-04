@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Sandbox.ShoppingCart.Models;
 
 namespace Sandbox.ShoppingCart.Repositories
 {

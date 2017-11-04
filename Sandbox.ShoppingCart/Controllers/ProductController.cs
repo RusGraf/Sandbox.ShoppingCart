@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Sandbox.ShoppingCart.Repositories;
 using System.Web.Mvc;
 
 namespace Sandbox.ShoppingCart.Controllers
 {
     public class ProductController : Controller
     {
+        private readonly IProductRepository _productRepository;
+
+        public ProductController() 
+        {
+            _productRepository = new ProductRepository();
+        }
+
         public ActionResult Overview()
         {
-            var model = new List<Product>();
-            model.Add(new Product
-            {
-                Name = "product 1",
-                Description = "Description 1",
-                Price = 100
-            });
-            model.Add(new Product
-            {
-                Name = "product 2",
-                Description = "Description 2",
-                Price = 200
-            });
+            var model = _productRepository.GetProducts();
+
             return View (model);
         }
     }
