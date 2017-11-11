@@ -16,12 +16,12 @@ namespace Sandbox.ShoppingCart.Tests.Controllers
         public void Index()
         {
             // Arrange
-            var controller = new HomeController();
+            var target = new ProductController();
 
             // Act
-            var result = (ViewResult)controller.Index();
+            var result = (ViewResult)target.Overview();
 
-            var mvcName = typeof(Controller).Assembly.GetName();
+            var mvcName = typeof(target).Assembly.GetName();
             var isMono = Type.GetType("Mono.Runtime") != null;
 
             var expectedVersion = mvcName.Version.Major + "." + mvcName.Version.Minor;
