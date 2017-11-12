@@ -15,12 +15,15 @@
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">@product.Name</h4>
                     <p class="group inner list-group-item-text">@product.Description</p>
+                    
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
                             <p class="lead">
                                 $@product.Price</p>
+                            <p> Quantity on hand: </p> 
+                            <p class="group inner list-group-item-text">@product.Qty</p>                            
                         </div>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-7">
                             <a class="btn btn-success" href="">Add to cart</a>
                         </div>
                     </div>

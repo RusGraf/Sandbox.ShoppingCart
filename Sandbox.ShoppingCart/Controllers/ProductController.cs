@@ -16,7 +16,7 @@ namespace Sandbox.ShoppingCart.Controllers
         {
             var model = _productRepository.GetProducts();
 
-            return View (model);
+            return View ("Overview",model);
         }
     }
 }
