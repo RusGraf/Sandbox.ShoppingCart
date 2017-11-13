@@ -8,28 +8,31 @@
 <div class="container">
     <div id="products" class="row list-group">
 		@foreach (var product in Model)
-        {
-        <div class="item  col-xs-4 col-lg-4">
-            <div class="thumbnail">
-                <img class="group list-group-image" src="http://placehold.it/200x100/000/fff" alt="" />
-                <div class="caption">
-                    <h4 class="group inner list-group-item-heading">@product.Name</h4>
-                    <p class="group inner list-group-item-text">@product.Description</p>
-                    
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                $@product.Price</p>
-                            <p> Quantity on hand: </p> 
-                            <p class="group inner list-group-item-text">@product.Qty</p>                            
-                        </div>
-                        <div class="col-xs-12 col-md-7">
-                            <a class="btn btn-success" href="">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        { <div class="item col-xs-4 col-lg-4"> 
+        <div class="thumbnail"> 
+        <img class="group list-group-image" src="http://placehold.it/200x100/000/fff" alt="" /> 
+        <div class="caption"> 
+            <h4 class="group inner list-group-item-heading">@product.Name</h4> 
+            <p class="group inner list-group-item-text">@product.Description</p> 
+            <div class="row"> 
+            <div class="col-xs-12 col-md-6"> 
+                <p class="lead"> Price: $@product.Price </p> 
+                </div> 
+                </div> 
+            <div class="row"> 
+            <div class="col-xs-12 col-md-6"> 
+                <p class="lead"> Qty available: 
+                    <nobr class="group inner list-group-item-text">@product.QtyAvailable</nobr> </p> 
+                </div>                       
+            </div> 
+            <div class="row"> 
+            <div class="col-xs-12 col-md-6"> 
+            <a class="btn btn-success" href="">Add to cart</a> 
+                </div> 
+                      </div> 
+            </div> 
+            </div> 
+        </div> 
         }
     </div>
 </div>
