@@ -87,12 +87,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="Clients\IMongoDbClient.cs" />
+    <Compile Include="Clients\MongoDbClient.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\IProductRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Models\Product.cs" />
   </ItemGroup>
@@ -127,6 +133,7 @@
     <None Include="Content\bootstrap.css.map" />
     <None Include="Content\bootstrap-theme.min.css.map" />
     <None Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Views\Category\Categories.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

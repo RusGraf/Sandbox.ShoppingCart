@@ -6,35 +6,42 @@
 <h2>Product Overview</h2>
 
 <div class="container">
+    <div id="categories">
+        @Html.Action("Categories", "Category")
+    </div>
+
     <div id="products" class="row list-group">
-		@foreach (var product in Model)
-        { <div class="item col-xs-4 col-lg-4"> 
-        <div class="thumbnail"> 
-        <img class="group list-group-image" src="http://placehold.it/200x100/000/fff" alt="" /> 
-        <div class="caption"> 
-            <h4 class="group inner list-group-item-heading">@product.Name</h4> 
-            <p class="group inner list-group-item-text">@product.Description</p> 
-            <div class="row"> 
-            <div class="col-xs-12 col-md-6"> 
-                <p class="lead"> Price: $@product.Price </p> 
-                </div> 
-                </div> 
-            <div class="row"> 
-            <div class="col-xs-12 col-md-6"> 
-                <p class="lead"> Qty available: 
-                    <nobr class="group inner list-group-item-text">@product.QtyAvailable</nobr> </p> 
-                p class="lead"> Category:
-                    <nobr class="group inner list-group-item-text">@product.CategoryName</nobr> </p>
-                </div>                       
-            </div> 
-            <div class="row"> 
-            <div class="col-xs-12 col-md-6"> 
-            <a class="btn btn-success" href="">Add to cart</a> 
-                </div> 
-                      </div> 
-            </div> 
-            </div> 
-        </div> 
+        @foreach (var product in Model)
+        {
+            <div class="item col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <img class="group list-group-image" src="http://placehold.it/200x100/000/fff" alt="" />
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">@product.Name</h4>
+                        <p class="group inner list-group-item-text">@product.Description</p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead"> Price: $@product.Price </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">
+                                    Qty available:
+                                    <nobr class="group inner list-group-item-text">@product.QtyAvailable</nobr>
+                                </p>
+                                @*<p class="lead"> Category:
+                                <nobr class="group inner list-group-item-text">@product.CategoryName</nobr> </p>*@
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <a class="btn btn-success" href="">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
     </div>
 </div>

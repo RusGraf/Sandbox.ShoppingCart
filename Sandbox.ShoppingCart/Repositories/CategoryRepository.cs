@@ -8,25 +8,25 @@ using Sandbox.ShoppingCart.Clients;
 
 namespace Sandbox.ShoppingCart.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class CategoryRepository : ICategoryRepository
     {
-        private IMongoCollection<BsonDocument> _collection;
+        private IMongoCollection<BsonDocument> _collection;        
 
-        public ProductRepository()
+        public CategoryRepository()
         {
             var mongoDbClient = new MongoDbClient();
             var shoppingCartDb = mongoDbClient.GetShoppingCartDb();
 
-            _collection = shoppingCartDb.GetCollection<BsonDocument>("Product");
+            _collection = shoppingCartDb.GetCollection<BsonDocument>("Categories");
         }
 
-        public List<Product> GetProducts()
+        public List<Category> GetCategories()
         {
-            var result = new List<Product>();
+            var result = new List<Category>();
             var documents =  _collection.Find(_ => true).ToList();
             foreach(var document in documents) 
             {
-                result.Add(BsonSerializer.Deserialize<Product>(document));
+                result.Add(BsonSerializer.Deserialize<Category>(document));
             }
 
             return result;
