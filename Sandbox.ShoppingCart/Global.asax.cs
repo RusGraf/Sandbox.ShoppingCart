@@ -13,27 +13,15 @@ namespace Sandbox.ShoppingCart
 {
     public class Global : NinjectHttpApplication
     {
-        //protected void Application_Start()
-        //{
-        //    AreaRegistration.RegisterAllAreas();
-        //    RouteConfig.RegisterRoutes(RouteTable.Routes);
-        //}
-
         protected override void OnApplicationStarted()
         {
             base.OnApplicationStarted();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //RegisterDependencies();
         }
 
         protected override IKernel CreateKernel()
         {
-            //var kernel = new StandardKernel();
-            //kernel.Load(Assembly.GetExecutingAssembly());
-
-            //return kernel;
-
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             return BootstrapHelper.LoadNinjectKernel(assemblies);
         }
@@ -48,14 +36,10 @@ namespace Sandbox.ShoppingCart
     {
         public IList<INinjectModule> GetModules()
         {
-            //this is where you will be considering priority of your modules.
             return new List<INinjectModule>()
                    {
                        new NinjectMapper()
                    };
-            //RepositoryModule cannot be loaded until DataObjectModule is loaded
-            //as it is depended on DataObjectModule and DbConnectionModule has
-            //dependency on RepositoryModule
         }
     }
 
