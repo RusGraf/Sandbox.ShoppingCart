@@ -53,7 +53,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryRepositoryTest.cs" />
+    <Compile Include="Repositories\ProductRepositoryTest.cs" />
+    <Compile Include="Repositories\CategoryRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

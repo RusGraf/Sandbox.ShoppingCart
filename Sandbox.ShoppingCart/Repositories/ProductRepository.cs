@@ -17,7 +17,7 @@ namespace Sandbox.ShoppingCart.Repositories
             var mongoDbClient = new MongoDbClient();
             var shoppingCartDb = mongoDbClient.GetShoppingCartDb();
 
-            _collection = shoppingCartDb.GetCollection<BsonDocument>("Product");
+            _collection = shoppingCartDb.GetCollection<BsonDocument>("Products");
         }
 
         public List<Product> GetProducts()
