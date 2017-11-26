@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Sandbox.ShoppingCart.Models;
 using Sandbox.ShoppingCart.Clients;
+using System.Linq;
 
 namespace Sandbox.ShoppingCart.Repositories
 {
@@ -12,9 +12,8 @@ namespace Sandbox.ShoppingCart.Repositories
     {
         private IMongoCollection<BsonDocument> _collection;        
 
-        public CategoryRepository()
-        {
-            var mongoDbClient = new MongoDbClient();
+        public CategoryRepository(IMongoDbClient mongoDbClient)
+        {            
             var shoppingCartDb = mongoDbClient.GetShoppingCartDb();
 
             _collection = shoppingCartDb.GetCollection<BsonDocument>("Categories");

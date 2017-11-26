@@ -5,6 +5,6 @@
 <ul>
     @foreach (var category in Model)
     {
-        <li>@category.CategoryName</li>
+        <li>@Html.ActionLink(@category.CategoryName, "OverviewCategory", "Product", new { categoryName = @category.CategoryName }, null)</li>        
     }
 </ul>
