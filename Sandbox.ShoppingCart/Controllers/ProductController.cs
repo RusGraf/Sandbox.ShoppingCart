@@ -18,6 +18,13 @@ namespace Sandbox.ShoppingCart.Controllers
 
             return View ("Overview", model);
         }
+
+        public ActionResult OverviewCategory(string categoryName)
+        {
+            var model = _productRepository.GetProducts(categoryName);
+
+            return View("Overview", model);
+        }
     }
 }
 

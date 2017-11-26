@@ -6,5 +6,6 @@ namespace Sandbox.ShoppingCart.Repositories
     public interface IProductRepository
     {
         List<Product> GetProducts();
+        List<Product> GetProducts(string categoryName);
     }
 }

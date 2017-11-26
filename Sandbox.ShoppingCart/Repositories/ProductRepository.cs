@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Sandbox.ShoppingCart.Models;
 using Sandbox.ShoppingCart.Clients;
+using System.Linq;
 
 namespace Sandbox.ShoppingCart.Repositories
 {
@@ -28,6 +29,12 @@ namespace Sandbox.ShoppingCart.Repositories
             }
 
             return result;
+        }
+
+        public List<Product> GetProducts(string categoryName)
+        {
+            var allProducts = GetProducts();
+            return allProducts.Where(x => x.CategoryName == categoryName).ToList();
         }
     }
 }

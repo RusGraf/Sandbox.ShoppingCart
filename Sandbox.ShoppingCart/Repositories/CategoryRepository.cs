@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using Sandbox.ShoppingCart.Models;
 using Sandbox.ShoppingCart.Clients;
+using System.Linq;
 
 namespace Sandbox.ShoppingCart.Repositories
 {

@@ -20,7 +20,7 @@ namespace Sandbox.ShoppingCart.Integration.Tests
         public void Initialize()
         {
             SetupMongoProducts();
-            _target = new ProductRepository();
+            _target = new ProductRepository(new MongoDbClient());
         }
 
         [TestMethod]
@@ -60,7 +60,7 @@ namespace Sandbox.ShoppingCart.Integration.Tests
 
         private static List<Product> _products = new List<Product>() {
             new Product {
-                CategoryName = "Shoes",
+                CategoryName = "Footware",
                 Description = "Red Awesome Shoes",
                 Name = "Carnage red",
                 Price = 110.0,
@@ -68,7 +68,7 @@ namespace Sandbox.ShoppingCart.Integration.Tests
                 QtyAvailable = 57
             },
             new Product {
-                CategoryName = "Shoes",
+                CategoryName = "Footware",
                 Description = "Black Awesome Shoes",
                 Name = "Dark Knight",
                 Price = 230.0,

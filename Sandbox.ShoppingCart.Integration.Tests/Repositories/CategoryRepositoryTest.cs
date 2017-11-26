@@ -20,7 +20,7 @@ namespace Sandbox.ShoppingCart.Integration.Tests
         public void Initialize()
         {
             SetupMongoCategories();
-            _target = new CategoryRepository();
+            _target = new CategoryRepository(new MongoDbClient());
         }
 
         [TestMethod]

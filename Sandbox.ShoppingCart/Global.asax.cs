@@ -16,7 +16,7 @@ namespace Sandbox.ShoppingCart
         protected override void OnApplicationStarted()
         {
             base.OnApplicationStarted();
-            AreaRegistration.RegisterAllAreas();
+            AreaRegistration.RegisterAllAreas();            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
