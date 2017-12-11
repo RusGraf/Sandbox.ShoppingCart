@@ -23,7 +23,7 @@ namespace Sandbox.ShoppingCart.Controllers
         {
             var model = _productRepository.GetProducts(categoryName);
 
-            return View("Overview", model);
+            return View ("Overview", model);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Sandbox.ShoppingCart.Unit.Tests
         }
 
         [TestMethod]
-        public void GivenCategories_WhenCategories_ThenReturnPartialView()
+        public void GivenCategories_WhenCategories_ThenReturnPartialViewWithCorrectName()
         {
             var actual = _target.Categories().ViewName;
 
