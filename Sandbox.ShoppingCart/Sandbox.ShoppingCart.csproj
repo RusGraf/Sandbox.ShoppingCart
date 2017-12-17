@@ -103,6 +103,7 @@
     <Compile Include="Clients\MongoDbClient.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Models\CartProduct.cs" />
     <Compile Include="Repositories\CartRepository.cs" />
     <Compile Include="Repositories\ICartRepository.cs" />
     <Compile Include="Global.asax.cs">
