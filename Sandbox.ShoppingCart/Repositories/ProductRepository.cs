@@ -19,6 +19,12 @@ namespace Sandbox.ShoppingCart.Repositories
             _collection = shoppingCartDb.GetCollection<BsonDocument>("Products");
         }
 
+        public Product GetProduct(string productId)
+        {
+            var allProducts = GetProducts();
+            return allProducts.Single(x => x.ProductId == productId);
+        }
+
         public List<Product> GetProducts()
         {
             var result = new List<Product>();

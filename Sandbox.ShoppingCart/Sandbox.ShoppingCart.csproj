@@ -101,7 +101,10 @@
   <ItemGroup>
     <Compile Include="Clients\IMongoDbClient.cs" />
     <Compile Include="Clients\MongoDbClient.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Repositories\CartRepository.cs" />
+    <Compile Include="Repositories\ICartRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
