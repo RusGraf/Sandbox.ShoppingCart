@@ -1,6 +1,4 @@
-﻿
-
-namespace Sandbox.ShoppingCart.Models
+﻿namespace Sandbox.ShoppingCart.Models
 {
     public class CartProduct : Product
     {
