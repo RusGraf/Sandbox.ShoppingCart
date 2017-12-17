@@ -12,7 +12,7 @@ namespace Sandbox.ShoppingCart.IoC
             Bind<ICategoryRepository>().To<CategoryRepository>();
             Bind<IProductRepository>().To<ProductRepository>();
             Bind<IMongoDbClient>().To<MongoDbClient>();
-            Bind<ICartRepository>().To<CartRepository>().WithConstructorArgument("session", HttpContext.Current.Session);
+            Bind<ICartRepository>().To<CartRepository>();
 
         }
     }

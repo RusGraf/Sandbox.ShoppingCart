@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Web;
 using Sandbox.ShoppingCart.Models;
 using System.Web.SessionState;
@@ -12,23 +10,28 @@ namespace Sandbox.ShoppingCart.Repositories
         private readonly HttpSessionState _session;
         private const string shoppingCartString = "ShoppingCart";
 
-        public CartRepository (HttpSessionState session)
+        public CartRepository ()
         {
-            _session = session;
+            _session = HttpContext.Current.Session;
         }
 
-        public void AddToCart(Product product)
+        //TODO: увеличить количество в корзине если мы добаляем существующий продукт
+        public void AddToCart(CartProduct cartProduct)
         {
-            List<Product> cart;
+            List<CartProduct> cart;
             if (_session[shoppingCartString] == null)
             {
-                cart = new List<Product>();
+                cart = new List<CartProduct>();
             }
             else
             {
-                cart = (List<Product>)_session[shoppingCartString];
+                cart = (List<CartProduct>)_session[shoppingCartString];
             }
-            cart.Add(product);
+            //условие, существует ли данный продукт в корзине
+            //если существует то увеличь Qty To Order
+            // если не существует то cart.Add(cartProduct);
+            cart.Add(cartProduct);
+
             _session[shoppingCartString] = cart;
         }
     }
