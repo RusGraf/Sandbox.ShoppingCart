@@ -32,7 +32,7 @@ namespace Sandbox.ShoppingCart.Repositories
             }
             else
             {
-                // если не существует то cart.Add(cartProduct);  
+                // если не существует то add to cart
                 var cartProduct = new CartProduct(product);
                 cart.Add(cartProduct);
             }            
