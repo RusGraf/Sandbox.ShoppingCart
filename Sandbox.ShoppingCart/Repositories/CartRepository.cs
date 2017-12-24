@@ -2,6 +2,7 @@
 using System.Web;
 using Sandbox.ShoppingCart.Models;
 using System.Web.SessionState;
+using System.Linq;
 
 namespace Sandbox.ShoppingCart.Repositories
 {
@@ -14,23 +15,27 @@ namespace Sandbox.ShoppingCart.Repositories
         {
             _session = HttpContext.Current.Session;
         }
-
-        //TODO: увеличить количество в корзине если мы добаляем существующий продукт
-        public void AddToCart(CartProduct cartProduct)
+        
+        public void AddToCart(Product product)
         {
             List<CartProduct> cart;
-            if (_session[shoppingCartString] == null)
+            cart = (_session[shoppingCartString] == null) ? 
+                new List<CartProduct>() :
+                (List<CartProduct>)_session[shoppingCartString];
+            
+            //условие, существует ли данный продукт в корзине
+            var existingProduct = cart.SingleOrDefault(x => x.ProductId == product.ProductId);
+            if (existingProduct != null) 
             {
-                cart = new List<CartProduct>();
+                //если существует то увеличь Qty To Order
+                existingProduct.QuantityToOrder += 1;
             }
             else
             {
-                cart = (List<CartProduct>)_session[shoppingCartString];
-            }
-            //условие, существует ли данный продукт в корзине
-            //если существует то увеличь Qty To Order
-            // если не существует то cart.Add(cartProduct);
-            cart.Add(cartProduct);
+                // если не существует то cart.Add(cartProduct);  
+                var cartProduct = new CartProduct(product);
+                cart.Add(cartProduct);
+            }            
 
             _session[shoppingCartString] = cart;
         }

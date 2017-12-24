@@ -15,7 +15,11 @@ namespace Sandbox.ShoppingCart.Controllers
             _productRepository = productRepository;
             _cartRepository = cartRepository;
         }
-
+        /// <summary>
+        /// Adding to cart product with matching productID
+        /// </summary>
+        /// <param name="productId">Unique primary key</param>
+        /// <returns>succes code 200</returns>
         public ActionResult AddToCart(string productId)
         {
             var product = _productRepository.GetProduct(productId);
