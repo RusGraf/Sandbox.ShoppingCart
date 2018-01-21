@@ -51,13 +51,16 @@
     <Reference Include="MongoDB.Driver.Core, Version=2.4.4.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\CartRepositotyTest.cs" />
     <Compile Include="Repositories\ProductRepositoryTest.cs" />
     <Compile Include="Repositories\CategoryRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

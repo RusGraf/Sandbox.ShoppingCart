@@ -3,13 +3,14 @@ using System.Web;
 using Sandbox.ShoppingCart.Models;
 using System.Web.SessionState;
 using System.Linq;
+using MongoDB.Driver;
 
 namespace Sandbox.ShoppingCart.Repositories
 {
     public class CartRepository : ICartRepository
     {
         private readonly HttpSessionState _session;
-        private const string shoppingCartString = "ShoppingCart";
+        private const string shoppingCartString = "ShoppingCart";        
 
         public CartRepository ()
         {
@@ -23,16 +24,13 @@ namespace Sandbox.ShoppingCart.Repositories
                 new List<CartProduct>() :
                 (List<CartProduct>)_session[shoppingCartString];
             
-            //условие, существует ли данный продукт в корзине
             var existingProduct = cart.SingleOrDefault(x => x.ProductId == product.ProductId);
             if (existingProduct != null) 
             {
-                //если существует то увеличь Qty To Order
                 existingProduct.QuantityToOrder += 1;
             }
             else
             {
-                // если не существует то add to cart
                 var cartProduct = new CartProduct(product);
                 cart.Add(cartProduct);
             }            
