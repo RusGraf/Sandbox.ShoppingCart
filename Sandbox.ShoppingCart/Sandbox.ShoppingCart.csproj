@@ -103,7 +103,9 @@
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Product\" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients\IMongoDbClient.cs" />
     <Compile Include="Clients\MongoDbClient.cs" />
@@ -135,7 +137,6 @@
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
-    <Content Include="Views\Product\Overview.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />

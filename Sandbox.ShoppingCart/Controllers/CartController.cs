@@ -8,7 +8,7 @@ namespace Sandbox.ShoppingCart.Controllers
     {
         private readonly IProductRepository _productRepository;
 
-        private readonly ICartRepository _cartRepository;        
+        private readonly ICartRepository _cartRepository;
 
         public CartController(IProductRepository productRepository, ICartRepository cartRepository )
         {
@@ -20,7 +20,7 @@ namespace Sandbox.ShoppingCart.Controllers
         /// </summary>
         /// <param name="productId">Unique primary key</param>
         /// <returns>succes code 200</returns>
-        public ActionResult AddToCart(string productId)
+        public HttpStatusCodeResult AddToCart(string productId)
         {
             var product = _productRepository.GetProduct(productId);
 

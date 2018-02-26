@@ -3,11 +3,6 @@ using Moq;
 using Sandbox.ShoppingCart.Controllers;
 using Sandbox.ShoppingCart.Models;
 using Sandbox.ShoppingCart.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sandbox.ShoppingCart.Unit.Tests.Controllers
 {
@@ -16,27 +11,33 @@ namespace Sandbox.ShoppingCart.Unit.Tests.Controllers
     {
         private CartController _target;
 
+        Product product = new Product
+        {
+            ProductId = "NewProductId123"
+        };
+
+        private Mock<IProductRepository> _productRepositoryMock;
         private Mock<ICartRepository> _cartRepositoryMock;
-        private List<CartProduct> _cart;
-    }
 
-    [TestInitialize]
-    public void Setup()
-    {
-        _cart = new List<CartProduct>() {
-             new CartProduct
-                {
-                    ProductId = "1"
-                }
-            };
-        //_cartRepositoryMock = new Mock<ICartRepository>();
-        //_cartRepositoryMock.Setup(x => x.GetProduct()).Returns(HttpStatusCodeResult(HttpStatusCode.OK));
+        [TestInitialize]
+        public void Setup()
+        {            
+            _productRepositoryMock = new Mock<IProductRepository>();
+            _productRepositoryMock.Setup(x => x.GetProduct(product.ProductId)).Returns(product);
 
-        //_target = new CartController(_cartRepositoryMock.Object);
-    }
-    [TestMethod]
-    public void GivenProductId_WhenAddToCart_ThenReturnSuccess()
-    {
+            _cartRepositoryMock = new Mock<ICartRepository>();
+            _cartRepositoryMock.Setup(x => x.AddToCart(product));            
 
+            _target = new CartController(_productRepositoryMock.Object, _cartRepositoryMock.Object);
+        }
+
+        [TestMethod]
+        public void GivenProductId_WhenAddToCart_ThenReturnSuccess()
+        {
+            var actual = _target.AddToCart(product.ProductId);            
+
+            Assert.AreEqual(200, actual.StatusCode);
+        }
     }
 }
+
