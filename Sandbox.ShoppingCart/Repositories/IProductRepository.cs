@@ -7,5 +7,6 @@ namespace Sandbox.ShoppingCart.Repositories
     {
         List<Product> GetProducts();
         List<Product> GetProducts(string categoryName);
+        Product GetProduct(string productId);
     }
 }

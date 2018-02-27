@@ -34,7 +34,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
-                                <a class="btn btn-success" href="">Add to cart</a>
+                                @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { productid = product.ProductId }, new { @class = "btn btn-success", target = "_blank" })
                             </div>
                         </div>
                     </div>
