@@ -103,14 +103,18 @@
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Views\Product\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="App_GlobalResources\Main.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main.resx</DependentUpon>
+    </Compile>
     <Compile Include="Clients\IMongoDbClient.cs" />
     <Compile Include="Clients\MongoDbClient.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartProduct.cs" />
     <Compile Include="Repositories\CartRepository.cs" />
     <Compile Include="Repositories\ICartRepository.cs" />
@@ -130,6 +134,7 @@
     <Compile Include="Wrappers\SessionStateWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\cart.png" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -160,6 +165,14 @@
     <None Include="Content\bootstrap-theme.min.css.map" />
     <None Include="Content\bootstrap-theme.css.map" />
     <Content Include="Views\Category\Categories.cshtml" />
+    <Content Include="Views\Cart\MiniCart.cshtml" />
+    <Content Include="Views\Product\Overview.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\Main.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Main.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

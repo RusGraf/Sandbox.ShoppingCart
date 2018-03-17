@@ -10,7 +10,7 @@
         @Html.Action("Categories", "Category")
     </div>
 
-    <div id="products" class="row list-group">
+    <div id="products" class="row">
         @foreach (var product in Model)
         {
             <div class="item col-xs-4 col-lg-4">
@@ -21,20 +21,20 @@
                         <p class="group inner list-group-item-text">@product.Description</p>
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
-                                <p class="lead"> Price: $@product.Price </p>
+                                <p class="lead"> @Resources.Main.Price: $@product.Price </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
                                 <p class="lead">
-                                    Qty available:
+                                    @Resources.Main.Qty_available:
                                     <nobr class="group inner list-group-item-text">@product.QtyAvailable</nobr>
                                 </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-md-6">
-                                @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { productid = product.ProductId }, new { @class = "btn btn-success", target = "_blank" })
+                                @Html.ActionLink(Resources.Main.Add_to_cart, "AddToCart", "Cart", new { productid = product.ProductId }, new { @class = "btn btn-success" })
                             </div>
                         </div>
                     </div>

@@ -55,5 +55,23 @@ namespace Sandbox.ShoppingCart.Unit.Tests
             shoppingCart[0].QuantityToOrder++;
             _sessionStateWrapperMock.Verify(x => x.SetShoppingCart(shoppingCart));
         }
+
+        [TestMethod]
+        public void GivenProductsInCart_WhenGetCart_ThenReturnCart()
+        {
+            Product product = new Product
+            {
+                ProductId = "NotExisting123"
+            };
+            var expectedCart = new List<CartProduct>()
+            {
+                new CartProduct(product)
+            };
+            _sessionStateWrapperMock.Setup(x => x.GetShoppingCart()).Returns(expectedCart);
+
+            var actual = _target.GetCart();
+
+            Assert.AreEqual(expectedCart, actual);
+        }
     }
 }

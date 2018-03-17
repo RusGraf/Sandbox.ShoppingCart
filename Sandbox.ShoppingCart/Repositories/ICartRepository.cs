@@ -5,5 +5,7 @@ namespace Sandbox.ShoppingCart.Repositories
     public interface ICartRepository
     {
         void AddToCart(Product product);
+
+        Cart GetCart();
     }
 }

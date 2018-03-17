@@ -1,0 +1,16 @@
+﻿@model Sandbox.ShoppingCart.Models.Cart
+@{
+    var itemCount = Model.ProductCount;
+    var cartLabel = "";
+    if (@itemCount == 1)
+    {
+        cartLabel = String.Format("{0} {1}", itemCount, Resources.Main.Item);
+    }
+    else
+    {
+        cartLabel = String.Format("{0} Items", itemCount, Resources.Main.Items);
+    }
+}
+<img width="50" alt="cart" src="~/Images/cart.png" />
+
+@Html.ActionLink(cartLabel, "GetCart", "Cart")

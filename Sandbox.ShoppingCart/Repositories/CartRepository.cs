@@ -3,6 +3,7 @@ using Sandbox.ShoppingCart.Models;
 using Sandbox.ShoppingCart.Wrappers;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Sandbox.ShoppingCart.Repositories
 {
@@ -30,6 +31,13 @@ namespace Sandbox.ShoppingCart.Repositories
             }
 
             _sessionStateWrapper.SetShoppingCart(cart);
+        }
+
+        public Cart GetCart()
+        {
+            return new Cart();
+            //TODO: finish code
+            throw new NotImplementedException();
         }
     }
 }

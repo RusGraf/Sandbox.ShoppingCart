@@ -3,6 +3,8 @@ using Moq;
 using Sandbox.ShoppingCart.Controllers;
 using Sandbox.ShoppingCart.Models;
 using Sandbox.ShoppingCart.Repositories;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace Sandbox.ShoppingCart.Unit.Tests.Controllers
 {
@@ -11,11 +13,22 @@ namespace Sandbox.ShoppingCart.Unit.Tests.Controllers
     {
         private CartController _target;
 
-        Product product = new Product
+        private static Product product = new Product
         {
             ProductId = "NewProductId123"
         };
 
+        private static Cart cart = new Cart()
+        {
+            Products = new List<CartProduct>()
+            {
+                new CartProduct(new Product()
+                {
+                    ProductId = "Product Id"
+                })
+            }
+        };
+        
         private Mock<IProductRepository> _productRepositoryMock;
         private Mock<ICartRepository> _cartRepositoryMock;
 
@@ -26,17 +39,43 @@ namespace Sandbox.ShoppingCart.Unit.Tests.Controllers
             _productRepositoryMock.Setup(x => x.GetProduct(product.ProductId)).Returns(product);
 
             _cartRepositoryMock = new Mock<ICartRepository>();
-            _cartRepositoryMock.Setup(x => x.AddToCart(product));            
+            _cartRepositoryMock.Setup(x => x.AddToCart(product));
+            _cartRepositoryMock.Setup(x => x.GetCart()).Returns(cart);
 
             _target = new CartController(_productRepositoryMock.Object, _cartRepositoryMock.Object);
         }
 
         [TestMethod]
-        public void GivenProductId_WhenAddToCart_ThenReturnSuccess()
+        public void GivenProductId_WhenAddToCart_ThenAddProductToCartRepository()
         {
-            var actual = _target.AddToCart(product.ProductId);            
+            _target.AddToCart(product.ProductId);
 
-            Assert.AreEqual(200, actual.StatusCode);
+            _cartRepositoryMock.Verify(x => x.AddToCart(product));
+        }
+
+        [TestMethod]
+        public void GivenProductId_WhenAddToCart_ThenReturnRedirectToOverview()
+        {
+            var actual = (RedirectToRouteResult)_target.AddToCart(product.ProductId);            
+            
+            Assert.AreEqual("Overview", actual.RouteValues["action"]);
+            Assert.AreEqual("Product", actual.RouteValues["controller"]);
+        }
+        
+        [TestMethod]
+        public void WhenViewCart_ThenReturnView()
+        {
+            var actual = _target.GetMiniCart().ViewName;
+
+            Assert.AreEqual("MiniCart", actual);
+        }
+
+        [TestMethod]
+        public void WhenViewCart_ThenReturnModel()
+        {
+            var actual = _target.GetMiniCart().Model;
+
+            Assert.AreEqual(cart, actual);
         }
     }
 }
