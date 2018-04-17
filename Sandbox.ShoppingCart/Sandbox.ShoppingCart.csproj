@@ -167,6 +167,7 @@
     <Content Include="Views\Category\Categories.cshtml" />
     <Content Include="Views\Cart\MiniCart.cshtml" />
     <Content Include="Views\Product\Overview.cshtml" />
+    <Content Include="Views\Cart\GetCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\Main.resx">

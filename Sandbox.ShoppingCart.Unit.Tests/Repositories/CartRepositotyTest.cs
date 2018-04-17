@@ -59,15 +59,22 @@ namespace Sandbox.ShoppingCart.Unit.Tests
         [TestMethod]
         public void GivenProductsInCart_WhenGetCart_ThenReturnCart()
         {
-            Product product = new Product
+            List<CartProduct> products = new List<CartProduct>()
             {
-                ProductId = "NotExisting123"
+                new CartProduct(
+                    new Product
+                    {
+                        ProductId = "NotExisting123"
+                    }
+                )
             };
-            var expectedCart = new List<CartProduct>()
+
+            var expectedCart = new Cart
             {
-                new CartProduct(product)
+                Products = products
             };
-            _sessionStateWrapperMock.Setup(x => x.GetShoppingCart()).Returns(expectedCart);
+
+            _sessionStateWrapperMock.Setup(x => x.GetShoppingCart()).Returns(products);
 
             var actual = _target.GetCart();
 

@@ -40,7 +40,7 @@ namespace Sandbox.ShoppingCart.Controllers
         public ActionResult GetCart()
         {
             //TODO: finish code after test
-            return null;
+            return View("GetCart", _cartRepository.GetCart());
         }
 
         /// <summary>
