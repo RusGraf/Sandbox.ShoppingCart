@@ -78,7 +78,7 @@ namespace Sandbox.ShoppingCart.Unit.Tests
 
             var actual = _target.GetCart();
 
-            Assert.AreEqual(expectedCart, actual);
+            Assert.AreEqual(expectedCart.Products, actual.Products);
         }
     }
 }
