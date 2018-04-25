@@ -9,13 +9,11 @@ namespace Sandbox.ShoppingCart.Models
         public int ProductCount { get
             {
                 var count = 0;
-                var totalPrice = 0.0d;
                 if (Products != null)
                 {
                     foreach (var product in Products)
                     {                    
                         count += product.QuantityToOrder;
-                        totalPrice += product.Price;
                     }
                 }
                 return count;
@@ -31,7 +29,7 @@ namespace Sandbox.ShoppingCart.Models
                 {
                     foreach (var product in Products)
                     {
-                        totalPrice += product.Price;
+                        totalPrice += product.Price * product.QuantityToOrder;
                     }
                 }
                 return totalPrice;
