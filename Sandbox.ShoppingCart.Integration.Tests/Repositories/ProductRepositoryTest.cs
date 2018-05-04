@@ -74,15 +74,38 @@ namespace Sandbox.ShoppingCart.Integration.Tests
                 Price = 230.0,
                 ProductId = "2",
                 QtyAvailable = 12
+            },new Product {
+                CategoryName = "Shirts",
+                Description = "Google team shirt",
+                Name = "Google team",
+                Price = 30.0,
+                ProductId = "3",
+                QtyAvailable = 22
             },
             new Product {
                 CategoryName = "Shirts",
                 Description = "Prisoner Shirt",
                 Name = "Kaka",
                 Price = 23.0,
-                ProductId = "3",
+                ProductId = "4",
                 QtyAvailable = 44
-            }
+            },
+            new Product {
+                CategoryName = "Pants",
+                Description = "Everyday jeans",
+                Name = "Super jeans",
+                Price = 100.0,
+                ProductId = "5",
+                QtyAvailable = 70
+            },
+            new Product {
+                CategoryName = "Pants",
+                Description = "Formal pants",
+                Name = "Black pants",
+                Price = 123.0,
+                ProductId = "6",
+                QtyAvailable = 14
+            },
         };
     }
 }

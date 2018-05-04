@@ -134,6 +134,7 @@
     <Compile Include="Wrappers\SessionStateWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\background.jpg" />
     <Content Include="Images\cart.png" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
