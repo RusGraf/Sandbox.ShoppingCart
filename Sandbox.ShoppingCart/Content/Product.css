@@ -1,8 +1,28 @@
-﻿.glyphicon {
+﻿body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.background {
+    /* The image used */
+    background-image: url("../../Images/background.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.greyedout {
+    color: grey;
+}
+
+.glyphicon {
     margin-right: 5px;
 }
 
-.thumbnail {
+.thumbnail {    
     margin-bottom: 20px;
     padding: 0px;
     -webkit-border-radius: 0px;

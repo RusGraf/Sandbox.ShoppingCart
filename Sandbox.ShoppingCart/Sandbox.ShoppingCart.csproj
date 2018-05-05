@@ -105,6 +105,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Main.RU.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main.RU.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\Main.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -168,9 +173,13 @@
     <Content Include="Views\Category\Categories.cshtml" />
     <Content Include="Views\Cart\MiniCart.cshtml" />
     <Content Include="Views\Product\Overview.cshtml" />
-    <Content Include="Views\Cart\GetCart.cshtml" />
+    <Content Include="Views\Cart\CartDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\Main.RU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Main.RU.designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="App_GlobalResources\Main.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Main.Designer.cs</LastGenOutput>

@@ -13,4 +13,11 @@
 }
 <img width="50" alt="cart" src="~/Images/cart.png" />
 
-@Html.ActionLink(cartLabel, "GetCart", "Cart")
+@if (itemCount == 0)
+{
+    @Html.Label(cartLabel, new { @class = "greyedout" })
+}
+else
+{
+    @Html.ActionLink(cartLabel, "GetCart", "Cart")
+}

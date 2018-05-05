@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add_to_cart" xml:space="preserve">
-    <value>Add to cart</value>
+    <value>Добавить в корзину</value>
   </data>
   <data name="CartDetails" xml:space="preserve">
-    <value>Cart Details</value>
+    <value>Корзина</value>
   </data>
   <data name="Item" xml:space="preserve">
-    <value>Item</value>
+    <value>продукт</value>
   </data>
   <data name="Items" xml:space="preserve">
-    <value>Items</value>
+    <value>продуктов</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Price</value>
+    <value>Цена</value>
   </data>
   <data name="Qty_available" xml:space="preserve">
-    <value>Qty available</value>
+    <value>Доступное количество</value>
   </data>
 </root>

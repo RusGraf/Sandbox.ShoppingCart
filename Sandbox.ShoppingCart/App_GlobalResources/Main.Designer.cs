@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cart Details.
+        /// </summary>
+        internal static string CartDetails {
+            get {
+                return ResourceManager.GetString("CartDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item.
         /// </summary>
         internal static string Item {
