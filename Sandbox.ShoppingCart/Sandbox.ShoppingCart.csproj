@@ -119,9 +119,13 @@
     <Compile Include="Clients\MongoDbClient.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartProduct.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Repositories\CartRepository.cs" />
+    <Compile Include="Repositories\IOrderRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\ICartRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -174,6 +178,7 @@
     <Content Include="Views\Cart\MiniCart.cshtml" />
     <Content Include="Views\Product\Overview.cshtml" />
     <Content Include="Views\Cart\CartDetails.cshtml" />
+    <Content Include="Views\Order\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Main.RU.resx">

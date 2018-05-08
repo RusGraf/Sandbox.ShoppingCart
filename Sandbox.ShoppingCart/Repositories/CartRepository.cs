@@ -34,8 +34,8 @@ namespace Sandbox.ShoppingCart.Repositories
 
         public Cart GetCart()
         {
-            //TODO: finish code
-            var cart = new Cart {
+            var cart = new Cart
+            {
                 Products = _sessionStateWrapper.GetShoppingCart()
             };
 

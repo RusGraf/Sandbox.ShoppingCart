@@ -129,6 +129,12 @@
   <data name="Items" xml:space="preserve">
     <value>Items</value>
   </data>
+  <data name="OrderDetails" xml:space="preserve">
+    <value>Order details</value>
+  </data>
+  <data name="Place_an_order" xml:space="preserve">
+    <value>Place an order</value>
+  </data>
   <data name="Price" xml:space="preserve">
     <value>Price</value>
   </data>

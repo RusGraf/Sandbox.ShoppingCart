@@ -1,17 +1,14 @@
-﻿@model Sandbox.ShoppingCart.Models.Cart
-
+﻿@model Sandbox.ShoppingCart.Models.Order
 @{
-    var cartProduct = Model.Products;
-
+    ViewBag.Title = "OrderDetails";
 }
 
+<h2>OrderDetails</h2>
 @{
-    ViewBag.Title = Resources.Main.CartDetails;
+    var cartProduct = Model.Cart.Products;
 }
 
-<h2>Cart Overview</h2>
-
-<div class="container">    
+<div class="container">
     <h2>Cart Items</h2>
     <table class="table table-striped">
         <thead>
@@ -31,12 +28,11 @@
                     <td>$@product.Price</td>
                     <td>@product.QuantityToOrder</td>
                 </tr>
-            }   
+            }
         </tbody>
     </table>
-    
-    <div class="font-weight-bold">Total price: $@Model.TotalPrice</div>
+
+    <div class="font-weight-bold">Total price: $@Model.Cart.TotalPrice</div>
 
     @Html.ActionLink(Resources.Main.Place_an_order, "GetCart", "Order")
 </div>
-
