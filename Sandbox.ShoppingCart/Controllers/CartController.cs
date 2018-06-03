@@ -10,7 +10,6 @@ namespace Sandbox.ShoppingCart.Controllers
     public class CartController : Controller
     {
         private readonly IProductRepository _productRepository;
-
         private readonly ICartRepository _cartRepository;
 
         public CartController(IProductRepository productRepository, ICartRepository cartRepository )

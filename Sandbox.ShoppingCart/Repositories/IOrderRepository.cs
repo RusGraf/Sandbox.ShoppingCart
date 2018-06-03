@@ -12,5 +12,6 @@ namespace Sandbox.ShoppingCart.Repositories
         List<Order> GetOrders();
 
         Order GetOrder(string orderId);
+        void CreateOrder(Cart cart);
     }
 }

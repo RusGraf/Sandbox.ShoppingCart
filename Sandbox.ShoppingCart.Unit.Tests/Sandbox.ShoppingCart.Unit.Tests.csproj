@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CartControllerTest.cs" />
+    <Compile Include="Controllers\OrderControllerTest.cs" />
     <Compile Include="Models\CartTest.cs" />
     <Compile Include="Repositories\CartRepositotyTest.cs" />
     <Compile Include="Controllers\CategoryControllerTest.cs" />

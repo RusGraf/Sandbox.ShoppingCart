@@ -7,6 +7,7 @@ using Sandbox.ShoppingCart.Models;
 using Sandbox.ShoppingCart.Wrappers;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Sandbox.ShoppingCart.Repositories
 {
@@ -60,6 +61,11 @@ namespace Sandbox.ShoppingCart.Repositories
         {
             var allProducts = GetOrders();
             return allProducts.Single(x => x.OrderId == orderId);
+        }
+
+        public void CreateOrder(Cart cart)
+        {
+            throw new NotImplementedException();
         }
     }
 }
