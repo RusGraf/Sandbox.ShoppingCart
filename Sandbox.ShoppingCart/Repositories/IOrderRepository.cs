@@ -7,11 +7,10 @@ namespace Sandbox.ShoppingCart.Repositories
 {
     public interface IOrderRepository
     {
-        void SetOrderCollection();
-
         List<Order> GetOrders();
 
         Order GetOrder(string orderId);
+
         void CreateOrder(Cart cart);
     }
 }

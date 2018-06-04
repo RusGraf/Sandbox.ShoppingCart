@@ -25,29 +25,25 @@ namespace Sandbox.ShoppingCart.Repositories
             ordersCollection = shoppingCartDb.GetCollection<BsonDocument>("Orders");
         }
 
-        public void SetOrderCollection()
+        public void CreateOrder(Cart cart)
         {
             BsonClassMap.RegisterClassMap<Order>(cm =>
             {
                 cm.AutoMap();
                 cm.MapIdProperty(c => c.OrderId)
-                        .SetIgnoreIfDefault(true) //added this line
+                        .SetIgnoreIfDefault(true)
                         .SetIdGenerator(ObjectIdGenerator.Instance);
             });
 
             Order order = new Order
             {
-                Cart = new Cart
-                {
-                    Products = _sessionStateWrapper.GetShoppingCart()
-                }
+                Cart = cart
             };
-
             ordersCollection.InsertOne(order.ToBsonDocument());
         }
 
         public List<Order> GetOrders()
-    {
+        {
             var result = new List<Order>();
             var documents = ordersCollection.Find(_ => true).ToList();
             foreach (var document in documents)
@@ -61,11 +57,6 @@ namespace Sandbox.ShoppingCart.Repositories
         {
             var allProducts = GetOrders();
             return allProducts.Single(x => x.OrderId == orderId);
-        }
-
-        public void CreateOrder(Cart cart)
-        {
-            throw new NotImplementedException();
         }
     }
 }

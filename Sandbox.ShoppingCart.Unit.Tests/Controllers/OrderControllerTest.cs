@@ -52,7 +52,7 @@ namespace Sandbox.ShoppingCart.Unit.Tests.Controllers
         {
             var result = (RedirectToRouteResult)_target.CreateOrder();
 
-            Assert.AreEqual("GetOrderConfirmation", result.RouteValues["action"]);
+            Assert.AreEqual("GetOrderConfirmationPage", result.RouteValues["action"]);
             Assert.AreEqual(orderId, result.RouteValues["orderId"]);
             Assert.IsNull(result.RouteValues["controller"]);
         }
