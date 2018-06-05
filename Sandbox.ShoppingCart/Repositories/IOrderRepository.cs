@@ -1,16 +1,11 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
-using Sandbox.ShoppingCart.Models;
-using System.Collections.Generic;
+﻿using Sandbox.ShoppingCart.Models;
 
 namespace Sandbox.ShoppingCart.Repositories
 {
     public interface IOrderRepository
     {
-        List<Order> GetOrders();
+        PurchaseOrder GetOrder(string orderId);
 
-        Order GetOrder(string orderId);
-
-        void CreateOrder(Cart cart);
+        string CreateOrder(Cart cart);
     }
 }

@@ -1,7 +1,10 @@
-﻿using Ninject;
+﻿using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.IdGenerators;
+using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Common.WebHost;
 using Sandbox.ShoppingCart.IoC;
+using Sandbox.ShoppingCart.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +21,24 @@ namespace Sandbox.ShoppingCart
             base.OnApplicationStarted();
             AreaRegistration.RegisterAllAreas();            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            DefineBsonId();
         }
 
         protected override IKernel CreateKernel()
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             return BootstrapHelper.LoadNinjectKernel(assemblies);
+        }
+
+        private void DefineBsonId()
+        {
+            BsonClassMap.RegisterClassMap<PurchaseOrder>(cm =>
+            {
+                cm.AutoMap();
+                cm.MapIdProperty(c => c._id)
+                        .SetIgnoreIfDefault(true)
+                        .SetIdGenerator(ObjectIdGenerator.Instance);
+            });
         }
     }
 

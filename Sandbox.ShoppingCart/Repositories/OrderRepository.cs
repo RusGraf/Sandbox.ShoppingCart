@@ -1,62 +1,62 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Driver;
 using Sandbox.ShoppingCart.Clients;
 using Sandbox.ShoppingCart.Models;
-using Sandbox.ShoppingCart.Wrappers;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace Sandbox.ShoppingCart.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
         private IMongoCollection<BsonDocument> ordersCollection;
-
-        private static readonly ISessionStateWrapper _sessionStateWrapper;
-
-
+        
         public OrderRepository(IMongoDbClient mongoDbClient)
         {
             var shoppingCartDb = mongoDbClient.GetShoppingCartDb();
-
             ordersCollection = shoppingCartDb.GetCollection<BsonDocument>("Orders");
         }
 
-        public void CreateOrder(Cart cart)
+        public string CreateOrder(Cart cart)
         {
-            BsonClassMap.RegisterClassMap<Order>(cm =>
-            {
-                cm.AutoMap();
-                cm.MapIdProperty(c => c.OrderId)
-                        .SetIgnoreIfDefault(true)
-                        .SetIdGenerator(ObjectIdGenerator.Instance);
-            });
+            var document = MapToOrder(cart).ToBsonDocument();
+            ordersCollection.InsertOne(document);
 
-            Order order = new Order
-            {
-                Cart = cart
-            };
-            ordersCollection.InsertOne(order.ToBsonDocument());
+            return document["_id"].ToString();
         }
 
-        public List<Order> GetOrders()
+        //TODO: unit test
+        public PurchaseOrder GetOrder(string orderId)
         {
-            var result = new List<Order>();
-            var documents = ordersCollection.Find(_ => true).ToList();
-            foreach (var document in documents)
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("_id", orderId);
+            //TODO: rethink this logic, it is crap
+            var document = ordersCollection.Find(_ => true).ToList().Single(x => x["_id"].ToString() == orderId);
+            return BsonSerializer.Deserialize<PurchaseOrder>(document);
+        }
+
+        //TODO: move to automapper and unit test
+        private PurchaseOrder MapToOrder(Cart cart)
+        {
+            var result = new PurchaseOrder()
             {
-                result.Add(BsonSerializer.Deserialize<Order>(document));
+                PurchaseItems = new List<PurchaseItem>()
+            };
+            foreach (var product in cart.Products)
+            {
+                result.PurchaseItems.Add(new PurchaseItem
+                {
+                    CategoryName = product.CategoryName,
+                    Description = product.Description,
+                    Name = product.Name,
+                    Price = product.Price,
+                    ProductId = product.ProductId,
+                    QtyOrdered = product.QuantityToOrder
+                });
             }
 
             return result;
-        }
-        public Order GetOrder(string orderId)
-        {
-            var allProducts = GetOrders();
-            return allProducts.Single(x => x.OrderId == orderId);
         }
     }
 }

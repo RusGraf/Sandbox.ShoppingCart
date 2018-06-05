@@ -17,20 +17,17 @@ namespace Sandbox.ShoppingCart.Controllers
 
         public ActionResult CreateOrder()
         {
-            //get order from session
             Cart cart = _cartRepository.GetCart();
+            var orderId = _orderRepository.CreateOrder(cart);
+            //TODO: clear session
 
-            //add order to the repo
-            // _orderRepository.CreateOrder();
-            _orderRepository.CreateOrder(cart);            
-
-            //redirect to get order confirmation page
-            return RedirectToAction("GetOrderConfirmationPage", new { orderId = 123L });
+            return RedirectToAction("OrderDetails", new { orderId = orderId });
         }
 
-        public ActionResult GetOrderConfirmationPage(String orderId)
+        public ActionResult OrderDetails(String orderId)
         {
-            Order order = _orderRepository.GetOrder(orderId);
+            var order = _orderRepository.GetOrder(orderId);
+
             return View("OrderDetails", order);
         }
 

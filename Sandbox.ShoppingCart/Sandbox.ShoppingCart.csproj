@@ -122,7 +122,8 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartProduct.cs" />
-    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\PurchaseItem.cs" />
+    <Compile Include="Models\PurchaseOrder.cs" />
     <Compile Include="Repositories\CartRepository.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />

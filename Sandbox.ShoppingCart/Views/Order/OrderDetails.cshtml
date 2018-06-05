@@ -1,38 +1,36 @@
-﻿@model Sandbox.ShoppingCart.Models.Order
+﻿@model Sandbox.ShoppingCart.Models.PurchaseOrder
 @{
     ViewBag.Title = "OrderDetails";
 }
 
+@*TODO: move text strings into resources*@
 <h2>OrderDetails</h2>
-@{
-    var cartProduct = Model.Cart.Products;
-}
 
 <div class="container">
-    <h2>Cart Items</h2>
+    <h2>Purchased Items</h2>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Description</th>
                 <th>@Resources.Main.Price</th>
-                <th>Qty to Order</th>
+                <th>Qty Ordered</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var product in cartProduct)
+            @foreach (var purchasedProduct in Model.PurchaseItems)
             {
                 <tr>
-                    <td>@product.Name</td>
-                    <td>@product.Description</td>
-                    <td>$@product.Price</td>
-                    <td>@product.QuantityToOrder</td>
+                    <td>@purchasedProduct.Name</td>
+                    <td>@purchasedProduct.Description</td>
+                    <td>$@purchasedProduct.Price</td>
+                    <td>@purchasedProduct.QtyOrdered</td>
                 </tr>
             }
         </tbody>
     </table>
 
-    <div class="font-weight-bold">Total price: $@Model.Cart.TotalPrice</div>
+    <div class="font-weight-bold">Total price: $@Model.TotalPrice</div>
 
-    @Html.ActionLink(Resources.Main.Place_an_order, "GetCart", "Order")
+    @*@Html.ActionLink(Resources.Main.Place_an_order, "GetCart", "Order")*@
 </div>
