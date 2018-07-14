@@ -2,6 +2,7 @@
 {
     public class CartProduct : Product
     {
+        //TODO: move to automapper
         public CartProduct(Product product)
         {
             ProductId = product.ProductId;

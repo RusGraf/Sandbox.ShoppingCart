@@ -25,6 +25,7 @@ namespace Sandbox.ShoppingCart.Repositories
             }
             else
             {
+                //TODO: change this to use automapper var cartProduct = _mapper.Map<Product, CartProduct>(product);
                 var cartProduct = new CartProduct(product);
                 cart.Add(cartProduct);
             }

@@ -1,7 +1,6 @@
 ﻿using Sandbox.ShoppingCart.Models;
 using Sandbox.ShoppingCart.Repositories;
 using Sandbox.ShoppingCart.Wrappers;
-using System;
 using System.Web.Mvc;
 
 namespace Sandbox.ShoppingCart.Controllers
@@ -28,12 +27,11 @@ namespace Sandbox.ShoppingCart.Controllers
             return RedirectToAction("OrderDetails", new { orderId = orderId });
         }
 
-        public ActionResult OrderDetails(String orderId)
+        public ActionResult OrderDetails(string orderId)
         {
             var order = _orderRepository.GetOrder(orderId);
 
             return View("OrderDetails", order);
         }
-
     }
 }
