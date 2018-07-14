@@ -5,6 +5,7 @@ using Sandbox.ShoppingCart.Repositories;
 using Moq;
 using Sandbox.ShoppingCart.Models;
 using System.Web.Mvc;
+using Sandbox.ShoppingCart.Wrappers;
 
 namespace Sandbox.ShoppingCart.Unit.Tests.Controllers
 {
@@ -15,20 +16,23 @@ namespace Sandbox.ShoppingCart.Unit.Tests.Controllers
 
         private Mock<IOrderRepository> _orderRepositoryMock;
         private Mock<ICartRepository> _cartRepositoryMock;
+        private Mock<ISessionStateWrapper> _sessionStateWrapper;
 
         private Cart cart;
-        private long orderId;
+        private string orderId;
 
         [TestInitialize]
         public void Setup() {
             cart = new Cart();
-            orderId = 123L;
+            orderId = "123";
 
             _orderRepositoryMock = new Mock<IOrderRepository>();
             _cartRepositoryMock = new Mock<ICartRepository>();
+            _sessionStateWrapper = new Mock<ISessionStateWrapper>();
+            _orderRepositoryMock.Setup(x => x.CreateOrder(cart)).Returns(orderId);
             _cartRepositoryMock.Setup(x => x.GetCart()).Returns(cart).Verifiable();
 
-            _target = new OrderController(_orderRepositoryMock.Object, _cartRepositoryMock.Object);
+            _target = new OrderController(_orderRepositoryMock.Object, _cartRepositoryMock.Object, _sessionStateWrapper.Object);
         }
 
         [TestMethod]
@@ -52,7 +56,7 @@ namespace Sandbox.ShoppingCart.Unit.Tests.Controllers
         {
             var result = (RedirectToRouteResult)_target.CreateOrder();
 
-            Assert.AreEqual("GetOrderConfirmationPage", result.RouteValues["action"]);
+            Assert.AreEqual("OrderDetails", result.RouteValues["action"]);
             Assert.AreEqual(orderId, result.RouteValues["orderId"]);
             Assert.IsNull(result.RouteValues["controller"]);
         }

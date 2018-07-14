@@ -46,7 +46,7 @@ namespace Sandbox.ShoppingCart.Repositories
             foreach (var product in cart.Products)
             {
                 result.PurchaseItems.Add(new PurchaseItem
-                {
+                {                                           
                     CategoryName = product.CategoryName,
                     Description = product.Description,
                     Name = product.Name,

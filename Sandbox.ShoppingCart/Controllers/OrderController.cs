@@ -1,5 +1,6 @@
 ﻿using Sandbox.ShoppingCart.Models;
 using Sandbox.ShoppingCart.Repositories;
+using Sandbox.ShoppingCart.Wrappers;
 using System;
 using System.Web.Mvc;
 
@@ -9,17 +10,20 @@ namespace Sandbox.ShoppingCart.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly ICartRepository _cartRepository;
+        private readonly ISessionStateWrapper _sessionStateWrapper;
 
-        public OrderController(IOrderRepository orderRepository, ICartRepository cartRepository) {
+        public OrderController(IOrderRepository orderRepository, ICartRepository cartRepository, ISessionStateWrapper sessionStateWrapper) {
             _orderRepository = orderRepository;
             _cartRepository = cartRepository;
+            _sessionStateWrapper = sessionStateWrapper;
         }
 
         public ActionResult CreateOrder()
         {
             Cart cart = _cartRepository.GetCart();
             var orderId = _orderRepository.CreateOrder(cart);
-            //TODO: clear session
+            _sessionStateWrapper.SetShoppingCart(null);
+            
 
             return RedirectToAction("OrderDetails", new { orderId = orderId });
         }
